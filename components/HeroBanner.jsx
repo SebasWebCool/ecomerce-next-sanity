@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-import {urlFor} from '../LIB/client'
+import {urlFor} from '../lib/client'
 
 const HeroBanner = ({heroBanner}) => {
   return (

@@ -4,7 +4,7 @@ import { toast } from 'react-hot-toast'
 import {TiDeleteOutline} from 'react-icons/ti'
 
 import { useStateContext } from '../context/StateContext'
-import { urlFor } from '../LIB/client'
+import { urlFor } from '../lib/client'
 import Link from 'next/link'
 
 

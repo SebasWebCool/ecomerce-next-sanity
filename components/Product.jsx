@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-import { urlFor,client } from '../lib/client'
+import { urlFor } from '../lib/client'
 
 
 const Product = ({product:{image,name,slug,price}}) => {
@@ -19,17 +19,3 @@ const Product = ({product:{image,name,slug,price}}) => {
 }
 
 export default Product
-
-export const getStaticProps = async ({ params: { slug }}) => {
-  const query = `*[_type == "product" && slug.current == '${slug}'][0]`;
-  const productsQuery = '*[_type == "product"]'
-  
-  const product = await client.fetch(query);
-  const products = await client.fetch(productsQuery);
-
-  console.log(product);
-
-  return {
-    props: { products, product }
-  }
-}

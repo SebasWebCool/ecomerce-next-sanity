@@ -4,13 +4,19 @@ import { toast } from 'react-hot-toast'
 import {TiDeleteOutline} from 'react-icons/ti'
 
 import { useStateContext } from '../context/StateContext'
-import { urlFor, client } from '../lib/client'
+import { urlFor } from '../lib/client'
 import Link from 'next/link'
 
 
 const Cart = () => {
   const cartRef = useRef();
   const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuanitity, onRemove } = useStateContext();
+
+  // console.log(product);
+
+
+  // const { image, name, details, price } = product;
+
 
   // const handleCheckout = async () => {
   //   const stripe = await getStripe();
@@ -111,17 +117,3 @@ const Cart = () => {
 }
 
 export default Cart
-
-export const getStaticProps = async ({ params: { slug }}) => {
-  const query = `*[_type == "product" && slug.current == '${slug}'][0]`;
-  const productsQuery = '*[_type == "product"]'
-  
-  const product = await client.fetch(query);
-  const products = await client.fetch(productsQuery);
-
-  console.log(product);
-
-  return {
-    props: { products, product }
-  }
-}

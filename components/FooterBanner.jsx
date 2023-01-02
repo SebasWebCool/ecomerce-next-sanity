@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-import { urlFor } from '../lib/client'
+import { urlFor, client } from '../lib/client'
 
 const FooterBanner = ({ footerBanner: { discount, largeText1, largeText2, saleTime, smallText, midText, desc, product, buttonText, image } }) => {
   return (
@@ -29,3 +29,17 @@ const FooterBanner = ({ footerBanner: { discount, largeText1, largeText2, saleTi
   )
 }
 export default FooterBanner
+
+export const getStaticProps = async ({ params: { slug }}) => {
+  const query = `*[_type == "product" && slug.current == '${slug}'][0]`;
+  const productsQuery = '*[_type == "product"]'
+  
+  const product = await client.fetch(query);
+  const products = await client.fetch(productsQuery);
+
+  console.log(product);
+
+  return {
+    props: { products, product }
+  }
+}

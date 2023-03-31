@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-import { urlFor } from '../lib/client'
+import { urlFor } from '../lib/Client'
 
 const FooterBanner = ({ footerBanner: { discount, largeText1, largeText2, saleTime, smallText, midText, desc, product, buttonText, image } }) => {
   return (
